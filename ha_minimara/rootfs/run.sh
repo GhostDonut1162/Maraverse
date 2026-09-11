@@ -2,25 +2,22 @@
 set -euo pipefail
 
 readonly tunnel_id="$(bashio::config 'tunnel_id')"
-readonly control_plane_api_key="$(bashio::config 'control_plane_api_key')"
+export CONTROL_PLANE_API_KEY="$(bashio::config 'control_plane_api_key')"
 
 if [[ ! "${tunnel_id}" =~ ^tunnel_[A-Za-z0-9]+$ ]]; then
   bashio::log.fatal "A separate HA MiniMara tunnel ID is required"
   exit 64
 fi
-if [[ -z "${control_plane_api_key}" ]]; then
+if [[ -z "${CONTROL_PLANE_API_KEY}" ]]; then
   bashio::log.fatal "The HA MiniMara tunnel credential is required"
   exit 64
 fi
 
-export CONTROL_PLANE_API_KEY="${control_plane_api_key}"
 export CONTROL_PLANE_TUNNEL_ID="${tunnel_id}"
 export HA_MINIMARA_URL="http://supervisor/core"
 export HA_MINIMARA_POLICY="/opt/ha-minimara/policy.json"
 export HA_MINIMARA_AUDIT="/data/audit.jsonl"
 export PYTHONUNBUFFERED=1
-
-unset control_plane_api_key
 
 exec /usr/local/bin/tunnel-client run \
   --control-plane.base-url https://api.openai.com \

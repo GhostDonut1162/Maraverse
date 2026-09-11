@@ -20,7 +20,8 @@ RUN apk add --no-cache ca-certificates python3 py3-pip unzip \
 WORKDIR /opt/ha-minimara
 COPY rootfs/ /
 COPY app/ ./
-RUN python3 -m venv /opt/ha-minimara/venv \
+RUN chmod 0755 /run.sh \
+    && python3 -m venv /opt/ha-minimara/venv \
     && /opt/ha-minimara/venv/bin/pip install --no-cache-dir --requirement requirements.txt \
     && /opt/ha-minimara/venv/bin/pip install --no-cache-dir --no-deps .
 

@@ -1,6 +1,6 @@
 {
   "den": {
-    "camera": "camera.den_camera_clear",
+    "camera": "camera.den_clear",
     "motion": "binary_sensor.den_camera_motion",
     "person": "binary_sensor.den_camera_person",
     "animal": "binary_sensor.den_camera_animal",

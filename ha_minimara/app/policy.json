@@ -1,0 +1,18 @@
+{
+  "den": {
+    "camera": "camera.den_camera_clear",
+    "motion": "binary_sensor.den_camera_motion",
+    "person": "binary_sensor.den_camera_person",
+    "animal": "binary_sensor.den_camera_animal",
+    "ptz": {
+      "up": "button.den_camera_ptz_up",
+      "down": "button.den_camera_ptz_down",
+      "left": "button.den_camera_ptz_left",
+      "right": "button.den_camera_ptz_right",
+      "stop": "button.den_camera_ptz_stop"
+    },
+    "guard_go_to": "button.den_camera_guard_go_to",
+    "guard_return": "switch.den_camera_guard_return",
+    "privacy_mode": "switch.den_camera_privacy_mode"
+  }
+}
